@@ -4,12 +4,18 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255);
+   
+    background-color: #0f6c4c;
 }
 
 body{ 
     margin: 0;
     padding: 0;
+    font-family: "Comfortaa", sans-serif;
+    display: flex;
+    justify-content: center;    align-items: center;
+    height: 100vh;
+    background-color: #b7e5b0;
 }
 
 .connexion{
@@ -20,7 +26,11 @@ body{
     align-items: center;
     padding: 20px;
     gap: 20px;
-    width: 300px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #339933;
+    color: white;
 }
 
 form{
@@ -29,14 +39,23 @@ form{
     justify-content: center;
     align-items:    center;
     gap: 20px;
+    color: white;
 }
 nav{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 120px;
     display: flex;
     justify-content: start;
     align-items: center;
+    border-bottom: 2px solid black;
+    gap: 50px;
+    padding: 0 10px;
+    background-color: #339933;
 }
+
 .logoContainer{
     width: 100px;
     height: 100px;
@@ -47,10 +66,18 @@ nav{
 }
 .option{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 0 10%;
     align-items: center;
-    width: 100%;
+    width: 70%;
     height: 100%;
+    box-sizing: border-box;
+    
+    
+}
+.option>a{
+    text-decoration: none;
+    color: white;
 }
 .VIET{
     justify-content: center;
@@ -58,6 +85,7 @@ nav{
     display: flex;
     width: auto;
     height: 100%;
+    color: white;
 }
 
 
@@ -71,4 +99,27 @@ nav{
 
 .formOrder{
     align-items: start!important;
+}
+
+.hugeOrderContainer{
+    width: 100%;
+    height: calc(100vh - 130px);
+    position: absolute;
+    top: 130px;
+    
+    padding-bottom: 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    overflow-y: auto;
+}
+.commandeContainer{
+    width: 400px;
+    height: 300px;
+    border: 2px solid black;
+    /* box-sizing: border-box; */
+    padding: 10px;
+    overflow-y: auto;
 }
