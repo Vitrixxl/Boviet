@@ -1,0 +1,18 @@
+<main>
+        <div class="connexion">
+            <h1>VietAppetit</h1>
+            <form action="connexion.php" method="post">
+                <div>
+                    <h3>Nom d'utilisateur</h3>
+                    <input type="text" name="username">
+                    
+                </div>
+                <div>
+                    <h3>Mot de passe</h3>
+                    <input type="password" name="psw">
+                    
+                </div>
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+    </main>
