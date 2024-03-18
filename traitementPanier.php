@@ -5,17 +5,22 @@ if (isset($_GET['id']) ){
     $plat = array("id" => $currentID);
     $i = 1;
     while (isset ($_POST[$i])) {
-        echo $_POST[$i];
+        
         $plat["$i"] = $_POST[$i];
-        echo $plat["$i"];
+        
         $i++;
     }
-    if (!is_array($_SESSION["panier"])) {
+    if (isset($_SESSION["panier"])){
+        if (!is_array($_SESSION["panier"])) {
+            $_SESSION["panier"] = array();
+        }
+    }else{
         $_SESSION["panier"] = array();
     }
     
+    
     array_push($_SESSION["panier"], $plat);
-    print_r($_SESSION["panier"]);
+    
     switch ($_GET['from']) {
         case 'viandes':
             header("Location: index.php?page=plat&plat=viandes&insert=true");
@@ -44,12 +49,17 @@ if (isset($_GET['id']) ){
         
     }
     
-    echo "<button onclick='getPanier()'>Voir le contenu du panier</button>";
+    // echo "<button onclick='getPanier()'>Voir le contenu du panier</button>";
 }
 
 if (isset ($_GET['test'])) {
 
-    $connexion= new mysqli("localhost", "root", "", "boviet");
+    $host = 'mysql-db';
+    $user = 'db_devuser';
+    $pass = 'J&_9VZ8Tej9xk9%';
+    $db = 'lab_database';
+
+    $connexion= new mysqli($host, $user,$pass, $db);
 
     if (isset ($_SESSION["panier"])){
         $panier = $_SESSION["panier"];
@@ -75,7 +85,7 @@ if (isset ($_GET['test'])) {
 }
 
 ?>
-<form action="deletePanier.php">
+<!-- <form action="deletePanier.php">
     <input type="submit" value="delete">
 
 </form>
@@ -84,4 +94,4 @@ if (isset ($_GET['test'])) {
 
 </form>
 </body>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="script.js"></script> -->

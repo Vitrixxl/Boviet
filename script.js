@@ -66,29 +66,38 @@ panier.splice(0, 1);
       console.log(currentLib);
       let nbOption=infoProduit[step];
       nbOption++;
-      if (step + 1 == infoProduit.length || currentLib == "NEM BOBUN" || currentLib == "CACAHUÈTE BOBUN & PAD THAÏ" || currentLib =="BASE POKE BOWL" || currentLib =="CUISSON BOEUF" || currentLib=="OPTIONS SOUPES" || currentLib=="VIANDE MEZZE" || currentLib=="BASE POKE BOWL") {
-        if ((currentLib=="CUISSON BOEUF"||currentLib=="OPTIONS SOUPES" || currentLib=="VIANDE MEZZE") && nbOption>=4){
-          nbOption++;
-          if(nbOption>=6){
+      if ((idProduit==32 || idProduit==27 ||idProduit==183||idProduit==29||idProduit==28||idProduit==30||idProduit==31) && nbOption==7 ){
+        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
+        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
+        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
+        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 6 + ")");
+        await new Promise(resolve => setTimeout(resolve, 200));
+      }else{
+        if (step + 1 == infoProduit.length || currentLib == "NEM BOBUN" || currentLib == "CACAHUÈTE BOBUN & PAD THAÏ" || currentLib =="BASE POKE BOWL" || currentLib =="CUISSON BOEUF" || currentLib=="OPTIONS SOUPES" || currentLib=="VIANDE MEZZE" || currentLib=="BASE POKE BOWL") {
+          if ((currentLib=="CUISSON BOEUF"||currentLib=="OPTIONS SOUPES" || currentLib=="VIANDE MEZZE") && nbOption>=4){
             nbOption++;
-            if(nbOption==8){
+            if(nbOption>=6){
               nbOption++;
+              if(nbOption==8){
+                nbOption++;
+              }
             }
           }
+          nbOption++;
         }
-        nbOption++;
+  
+        console.log(currentLib);
+        // console.log("form:nth-of-type("+step+") .col-md-6:nth-of-type("+nbOption+")");
+        if (currentLib == "CONSIGNE DESSERT ÉCOLOGIQUE") {
+  
+          await page.click('.radio-input');
+          await new Promise(resolve => setTimeout(resolve, 200));
+        } else {
+          await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + nbOption + ")");
+          await new Promise(resolve => setTimeout(resolve, 200));
+        }
       }
-
-      console.log(currentLib);
-      // console.log("form:nth-of-type("+step+") .col-md-6:nth-of-type("+nbOption+")");
-      if (currentLib == "CONSIGNE DESSERT ÉCOLOGIQUE") {
-
-        await page.click('.radio-input');
-        await new Promise(resolve => setTimeout(resolve, 200));
-      } else {
-        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + nbOption + ")");
-        await new Promise(resolve => setTimeout(resolve, 200));
-      }
+      
 
     }
     const addToCart = '.addToCart';
