@@ -492,7 +492,11 @@
                 "opt1": "sans",
                 "opt2": "Piment",
                 "opt3": "Cacahuete",
-                "opt4":"Oignon"
+                "opt4": "Oignon",
+                "opt5": "Piment + Cacahuete",
+                "opt6": "Oignon + Cacahuete",
+                "opt7": "Oignon + Piment",
+                "opt8": "Tout"
               },
               "chauffé": {
                 "opt1": "chauffé",
