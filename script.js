@@ -40,10 +40,10 @@ panier.splice(0, 1);
   await new Promise(resolve => setTimeout(resolve, 500));
 
   const mailSelector = 'input[type="email"]';
-  await page.type(mailSelector, 'vitrice91@gmail.com');
+  await page.type(mailSelector, 'candas.alex@gmail.com');
   const mdpSelector = 'input[type="password"]';
   await new Promise(resolve => setTimeout(resolve, 500));
-  await page.type(mdpSelector, '@9G@R6Ej!MD3Zbk');
+  await page.type(mdpSelector, 'boviet123');
   await new Promise(resolve => setTimeout(resolve, 500));
   const logButton = 'button[type="submit"]';
   await page.click(logButton);
@@ -55,78 +55,85 @@ panier.splice(0, 1);
     let idProduit = infoProduit[0];
     console.log(infoProduit);
 
-    await page.goto("https://deliver.biz/carte/options/" + idProduit, { timeout: 0 });
-    await new Promise(resolve => setTimeout(resolve, 200));
-    for (var step = 1; step < infoProduit.length; step++) {
-      var test = step;
-      const currentLib = await page.evaluate((test) => {
-        const radioInput = document.querySelector("form:nth-of-type(" + test + ") .col-md-12 .headline-gamma");
-        return radioInput ? radioInput.innerText : null;
-      }, test);
-      console.log(currentLib);
-      let nbOption=infoProduit[step];
-      nbOption++;
-      if ((idProduit==32 || idProduit==27 ||idProduit==183||idProduit==29||idProduit==28||idProduit==30||idProduit==31) && nbOption==7 ){
-        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
-        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 6 + ")");
-        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 8 + ")");
-        await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 10 + ")");
-        await new Promise(resolve => setTimeout(resolve, 200));
-      }else if (idProduit==171 && currentLib=="OPTIONS MÌ KHÔ"){
-        switch (nbOption) {
-          case 6:
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
-            await new Promise(resolve => setTimeout(resolve, 200));
-            break;
-        
-          case 7:
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
-            await new Promise(resolve => setTimeout(resolve, 200));
-            break;
+    
+    if (infoProduit.length > 1) {
+      await page.goto("https://deliver.biz/carte/options/" + idProduit, { timeout: 0 });
+      await new Promise(resolve => setTimeout(resolve, 200));
+      for (var step = 1; step < infoProduit.length; step++) {
+        var test = step;
+        const currentLib = await page.evaluate((test) => {
+          const radioInput = document.querySelector("form:nth-of-type(" + test + ") .col-md-12 .headline-gamma");
+          return radioInput ? radioInput.innerText : null;
+        }, test);
+        console.log(currentLib);
+        let nbOption = infoProduit[step];
+        nbOption++;
+        if ((idProduit == 32 || idProduit == 27 || idProduit == 183 || idProduit == 29 || idProduit == 28 || idProduit == 30 || idProduit == 31) && nbOption == 7) {
+          await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
+          await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 6 + ")");
+          await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 8 + ")");
+          await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 10 + ")");
+          await new Promise(resolve => setTimeout(resolve, 200));
+        } else if (idProduit == 171 && currentLib == "OPTIONS MÌ KHÔ") {
+          switch (nbOption) {
+            case 6:
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
+              await new Promise(resolve => setTimeout(resolve, 200));
+              break;
 
-          case 8:
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
-            await new Promise(resolve => setTimeout(resolve, 200));
-            break;
+            case 7:
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
+              await new Promise(resolve => setTimeout(resolve, 200));
+              break;
 
-          case 9:
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
-            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
-            await new Promise(resolve => setTimeout(resolve, 200));
-            break;
-        }
-      }else{
-        if (step + 1 == infoProduit.length || currentLib == "NEM BOBUN" || currentLib == "CACAHUÈTE BOBUN & PAD THAÏ" || currentLib =="BASE POKE BOWL" || currentLib =="CUISSON BOEUF" || currentLib=="OPTIONS SOUPES" || currentLib=="VIANDE MEZZE" || currentLib=="BASE POKE BOWL") {
-          if ((currentLib=="CUISSON BOEUF"||currentLib=="OPTIONS SOUPES" || currentLib=="VIANDE MEZZE") && nbOption>=4){
-            nbOption++;
-            if(nbOption>=6){
+            case 8:
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
+              await new Promise(resolve => setTimeout(resolve, 200));
+              break;
+
+            case 9:
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
+              await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
+              await new Promise(resolve => setTimeout(resolve, 200));
+              break;
+          }
+        } else {
+          if (step + 1 == infoProduit.length || currentLib == "NEM BOBUN" || currentLib == "CACAHUÈTE BOBUN & PAD THAÏ" || currentLib == "BASE POKE BOWL" || currentLib == "CUISSON BOEUF" || currentLib == "OPTIONS SOUPES" || currentLib == "VIANDE MEZZE" || currentLib == "BASE POKE BOWL") {
+            if ((currentLib == "CUISSON BOEUF" || currentLib == "OPTIONS SOUPES" || currentLib == "VIANDE MEZZE") && nbOption >= 4) {
               nbOption++;
-              if(nbOption==8){
+              if (nbOption >= 6) {
                 nbOption++;
+                if (nbOption == 8) {
+                  nbOption++;
+                }
               }
             }
+            nbOption++;
           }
-          nbOption++;
-        }
-  
-        console.log(currentLib);
-        // console.log("form:nth-of-type("+step+") .col-md-6:nth-of-type("+nbOption+")");
-        if (currentLib == "CONSIGNE DESSERT ÉCOLOGIQUE") {
-  
-          await page.click('.radio-input');
-          await new Promise(resolve => setTimeout(resolve, 200));
-        } else {
-          await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + nbOption + ")");
-          await new Promise(resolve => setTimeout(resolve, 200));
-        }
-      }
-      
 
+          console.log(currentLib);
+          // console.log("form:nth-of-type("+step+") .col-md-6:nth-of-type("+nbOption+")");
+          if (currentLib == "CONSIGNE DESSERT ÉCOLOGIQUE") {
+
+            await page.click('.radio-input');
+            await new Promise(resolve => setTimeout(resolve, 200));
+          } else {
+            await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + nbOption + ")");
+            await new Promise(resolve => setTimeout(resolve, 200));
+          }
+        }
+
+
+      }
+    } else {
+      await page.goto("https://deliver.biz/carte/produit/" + idProduit, { timeout: 0 });
+      await new Promise(resolve => setTimeout(resolve, 200));
     }
+    
     const addToCart = '.addToCart';
     await page.click(addToCart)
     await new Promise(resolve => setTimeout(resolve, 1000));

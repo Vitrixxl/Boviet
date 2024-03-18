@@ -1042,13 +1042,84 @@
           "SALADE FRAÎCHEUR": {
             "id": 40
           },
-          "SALADE THAÏE 'LAAP KAI'": {
+          "SALADE THAÏE LAAP KAI": {
             "id": 42
           }
+
+          
+
         },
         "viandes": {
           "SAUCISSE DE PORC": {
             "id": 187
+          }
+        },
+        "boissons":{
+          "Jus de lichi":{
+            "id":"96"
+          },
+          "Jus de mangue":{
+            "id":"98"
+          },
+          "Fanta orange":{
+            "id":"78"
+          },
+          "Oasis tropical":{
+            "id":"79"
+          },
+          "Jus de goyave":{
+            "id":"99"
+          },
+          "Jus de coco":{
+            "id":"100"
+          },
+          "Oasis fruit rouge":{
+            "id":"136"
+          },
+          "Seven up mojito":{
+            "id":"82"
+          },
+          "Lait de soja":{
+            "id":"101"
+          },
+          "Lipton Ice tea peche":{
+            "id":"83"
+          },
+          "Lipton Ice tea framboise":{
+            "id":"84"
+          },
+          "Coca cherry":{
+            "id":""
+          },
+          "Volvic exotique":{
+            "id":"138"
+          },
+          "Volvic Fraise":{
+            "id":"137"
+          },
+          "Topicana Orange":{
+            "id":"133"
+          },
+          "Schweppes Pomme":{
+            "id":"132"
+          },
+          "San Pellegrino":{
+            "id":"88"
+          },
+          "Evian":{
+            "id":"89"
+          },
+          "Orangina":{
+            "id":"86"
+          },
+          "Ice Tea Pastèque":{
+            "id":"141"
+          },
+          "Schweppes agrum":{
+            "id":"80"
+          },
+          "Sprite":{
+            "id":"81"
           }
         }
       }
