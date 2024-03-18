@@ -8,7 +8,7 @@ $user = 'db_devuser';
 $pass = 'J&_9VZ8Tej9xk9%';
 $db = 'lab_database';
 
-$connexion = new mysqli($host, $user, $pass, $db);
+$connexion = new mysqli("localhost", "root", "", "boviet");
 
 if ($connexion->connect_error) {
     die("Connection failed: " . $connexion->connect_error);
@@ -51,13 +51,13 @@ if (isset($_GET['page']) == true) {
 
             if (isset($_SESSION['connected'])) {
                 if ($_SESSION['connected'] == true) {
-                    include './order.php';
+                    include './test.php';
                     break;
                 }
                 include './connectUI.php';
                 break;
             } else {
-                include './order.php';
+                include './test.php';
                 break;
             }
 
@@ -97,6 +97,7 @@ if (isset($_GET['page']) == true) {
                         include './nonAdmin.php';
                         break;
                     } else {
+
                         include './adminMain.php';
                         break;
                     }
@@ -113,6 +114,35 @@ if (isset($_GET['page']) == true) {
         case 'deco';
             include './deco.php';
             break;
+
+
+        case 'plat';
+            if (isset($_SESSION['connected'])) {
+                if ($_SESSION['connected'] == true) {
+                    include './listPlat.php';
+            break;
+                }
+                include './connectUI.php';
+                break;
+            } else {
+                include './listPlat.php';
+            break;
+            }
+            
+
+        case 'panier';
+            if (isset($_SESSION['connected'])) {
+                if ($_SESSION['connected'] == true) {
+                    include './affichePanier.php';
+                    break;
+                }
+                include './connectUI.php';
+                break;
+            } else {
+                include './affichePanier.php';
+            break;
+            }
+            
     }
 } else {
     if (isset($_SESSION['connected'])) {

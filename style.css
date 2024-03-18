@@ -33,13 +33,20 @@ body{
     color: white;
 }
 
-form{
+.form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:    center;
     gap: 20px;
     color: white;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:   center;
+    gap: 10px;
 }
 nav{
     position: fixed;
@@ -50,7 +57,7 @@ nav{
     display: flex;
     justify-content: start;
     align-items: center;
-    border-bottom: 2px solid black;
+    border-bottom: 5px solid #0f6c4c;
     gap: 50px;
     padding: 0 10px;
     background-color: #339933!important;
@@ -70,21 +77,30 @@ nav{
     padding: 0 10%;
     align-items: center;
     width: 70%;
-    height: 100%;
+    
     box-sizing: border-box;
     
     
 }
 .option>a{
+    font-weight: 500;
     text-decoration: none;
     color: white;
+    padding: 10px;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+.option>a:hover{
+    background-color: white;
+    color: #339933;
+    border-radius: 10px;
 }
 .VIET{
     justify-content: center;
     align-items: center;
     display: flex;
-    width: auto;
-    height: 100%;
+    width: 150px;
+    height: 50%;
     color: white;
 }
 
@@ -113,7 +129,7 @@ nav{
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
-    overflow-y: auto;
+
 }
 .commandeContainer{
     width: 400px;
@@ -121,5 +137,214 @@ nav{
     border: 2px solid black;
     /* box-sizing: border-box; */
     padding: 10px;
-    overflow-y: auto;
+  
+}
+.title{
+    position: relative;
+    text-align:center;
+    scale:1.5;
+    background-color: #339933;
+    color: white;
+    height: 80px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    border-bottom-left-radius: 0;
+
+}
+.choixTypePlatContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.choixPlat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 100%;
+    flex-direction: column;
+}
+
+.platContainer{
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+    
+}
+
+.gigaContainer{
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15%;
+}
+
+.cardPlat{
+    /* border: 2px solid black; */
+    box-sizing:border-box;
+    width: calc(100% - 15px);
+    height: calc(100% - 15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: auto;
+    flex-direction: column;
+    
+    text-align: center;
+    padding: 10px  ;
+    border-radius: 10px;
+    background-color: #339933;
+    color: white;
+    transition: 0.5s;
+    box-shadow: 8px 8px 9px 0px rgba(0,0,0,0.6),inset 8px 8px 9px 0px rgba(0,0,0,0.1);
+    /* border: 2px solid #0f6c4c; */
+
+}
+.cardPlat>h3{
+    font-weight:bolder;
+}
+.cardPlat:hover{
+    width: 100%;
+    height: 100%;
+}
+select{
+    background-color: white;
+    color: #0f6c4c;
+    border: none;
+    border-radius: 3px;
+}
+input[type=submit]{
+    background: white;
+    color: #0f6c4c;
+    border-color: white;
+    border-style: none;
+    height: 30px;
+    border-radius: 10px;
+    text-shadow: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+input[type=submit]:hover{
+    background: #0f6c4c;
+    color:white;
+    border-color: #0f6c4c;
+
+}
+.adminContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+}
+.cardPlatmargin{
+    width: 380px;
+    height: 320px;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    
+}
+.cardPlatmargin:hover{
+    padding: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0f6c4c;
+
+    
+  }::-webkit-scrollbar-track {
+    background: #339933;
+
+  }
+
+  .cartContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+.choixPlat>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+}
+.choixPlat>div>a{
+    background-color: #339933;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 150px;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.5s;
+    text-decoration: none;
+}
+
+.choixPlat>div>a:hover{
+    background-color: white;
+    color: #339933;
+}
+.choixTypePlatContainer{
+    height: 400px;
+
+}
+
+.bigAdminContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 140px;
+    box-sizing: border-box;
+}
+.contentContainer{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: wrap; 
+    gap: 30px;
+    overflow: auto;
+}
+.contentAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    border: 2px solid;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
 }

@@ -9,7 +9,7 @@ if (isset($_POST['username']) && isset($_POST['psw'])) {
     $pass = 'J&_9VZ8Tej9xk9%';
     $db = 'lab_database';
 
-    $connexion = new mysqli($host, $user, $pass, $db);
+    $connexion= new mysqli("localhost", "root", "", "boviet");
 
     if ($connexion->connect_error) {
         die("Connection failed: " . $conn->connect_error);

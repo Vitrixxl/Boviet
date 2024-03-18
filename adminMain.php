@@ -1,51 +1,46 @@
 
-<div class="hugeOrderContainer">
+
+
+
+
+
+
+<div class="bigAdminContainer">
+<div class="adminContainer">
+    <h1 class="title">Que voulez vous faire ?</h1>
+    <form action="launchCard.php">
+            <input type="submit" value="Lancer la commande">
+    </form>
+    
+    <form action="startCard.php">
+            <input type="submit" value="Ouvrir les commandes">
+    </form>
+</div>
 <?php 
 
 
-$host = 'mysql-db';
-$user = 'db_devuser';
-$pass = 'J&_9VZ8Tej9xk9%';
-$db = 'lab_database';
-$hashed = password_hash("boviet123", PASSWORD_DEFAULT);
-$connexion = new mysqli($host, $user, $pass, $db);
-
-
-
-
-
-if ($connexion->connect_error) {
-    die("Connection failed: " . $connexion->connect_error);
+$connexion= new mysqli("localhost", "root", "", "boviet");
+$select = "SELECT usr_login, hpn_content from histo_panier inner join user on histo_panier.usr_id=user.usr_id";
+$result = $connexion->query($select);
+echo"<div class='contentContainer'>";
+foreach ($result as $row) {
+    $name= $row['usr_login'];
+    echo "<div class='contentAdmin'><h3>Commande de $name</h3>";
+    $contentArray = explode("|", $row["hpn_content"]);
+    foreach ($contentArray as $content) {
+        echo $content."<br>"."<br>";
+    }
+    echo "</div>";
 }
-
-
-
-$selectOrder = "SELECT ORD_CONTENT, USR_ID FROM `order`";
-$select= $connexion->query($selectOrder);
-foreach ($select as $order) {
-    $userid = $order['USR_ID'];
-    $orderContent = $order['ORD_CONTENT'];
-    $linkUser = "SELECT usr_name from user where usr_id ='$userid'";
-    $link = $connexion->query($linkUser);
-    if($userid==61){
-        $usr_name="Maitre Vietnamien";
-    }else{
-        foreach ($link as $name) {
-            $usr_name = $name['usr_name'];
-        }
-    };
-    
-    echo "
-    <div class='commandeContainer'>
-        <h2>Commande de $usr_name</h2>
-        <p>$orderContent</p>
-    </div>
-    
-    ";
-}
+echo "</div>";
 ?>
 </div>
-<!-- <div class="commandeContainer">
-    <h2>Commande de ''</h2>
-    <p></p>
-</div> -->
+
+<?php
+
+if (isset($_GET['start'])){
+    
+    echo "<script type='text/javascript'> alert('Les commandes ont été lancés, prevenez vite vos collèges !')</script>";
+}
+
+?>
