@@ -57,7 +57,7 @@ if (isset($_GET['page']) == true) {
                 include './connectUI.php';
                 break;
             } else {
-                include './test.php';
+                include './connectUI.php';
                 break;
             }
 
@@ -82,7 +82,7 @@ if (isset($_GET['page']) == true) {
                 include './connectUI.php';
                 break;
             } else {
-                include './horaire.php';
+                include './connectUI.php';
                 break;
             }
 
@@ -106,7 +106,7 @@ if (isset($_GET['page']) == true) {
                     break;
                 }
             } else {
-                include './adminMain.php';
+                include './connectUI.php';
                 break;
             }
 
@@ -126,7 +126,7 @@ if (isset($_GET['page']) == true) {
                 include './connectUI.php';
                 break;
             } else {
-                include './listPlat.php';
+                include './connectUI.php';
             break;
             }
             
@@ -140,7 +140,7 @@ if (isset($_GET['page']) == true) {
                 include './connectUI.php';
                 break;
             } else {
-                include './affichePanier.php';
+                include './connectUI.php';
             break;
             }
             
