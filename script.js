@@ -151,7 +151,9 @@ panier.splice(0, 1);
   await new Promise(resolve => setTimeout(resolve, 4000));
   await page.click("form:nth-of-type(1) .col-md-6:nth-of-type(4)");
   await new Promise(resolve => setTimeout(resolve, 200));
-  await page.click(".btn.btn-big.addToCart.btn-primary")
+  await page.click(".btn.btn-big.addToCart.btn-primary");
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  await page.click(".link.seeMore");
 })();
 
 
