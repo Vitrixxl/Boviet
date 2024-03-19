@@ -9,7 +9,7 @@ $chemin_fichier_json = './plat.json';
 $contenu_json = file_get_contents($chemin_fichier_json);
 $data = json_decode($contenu_json, true);
 // echo "";
-$_SESSION['hsp_content']="";
+$_SESSION['hsp_content'] = "";
 if (isset ($panier[0])) {
 
     foreach ($panier as $PANIER => $plat) {
@@ -20,21 +20,26 @@ if (isset ($panier[0])) {
             }
 
         }
-        $currentID=$plat['id'];
-        $platJson=trouverPlatParId($currentID,$data);
-        $_SESSION['hsp_content']=$_SESSION['hsp_content'].$platJson['nom'].' ';
-        echo $platJson['nom'].' ';
-        $i=0;
-        foreach ($platJson['option'] as $optionSection => $value) {
-            $currentChoix = $optArray[$i];
-            echo $value['opt'.$currentChoix].' ';
-            $_SESSION['hsp_content']=$_SESSION['hsp_content'].$value['opt'.$currentChoix].' ';
-            $i++;
+        // print_r($optArray);
+        $currentID = $plat['id'];
+        $platJson = trouverPlatParId($currentID, $data);
+        $_SESSION['hsp_content'] = $_SESSION['hsp_content'] . $platJson['nom'] . ' ';
+        echo $platJson['nom'] . ' ';
+        // print_r($platJson['option']);
+        $i = 0;
+        if (isset ($platJson['option'])) {
+            foreach ($platJson['option'] as $optionSection => $value) {
+                $currentChoix = $optArray[$i];
+                echo $value['opt' . $currentChoix] . ' ';
+                $_SESSION['hsp_content'] = $_SESSION['hsp_content'] . $value['opt' . $currentChoix] . ' ';
+                $i++;
+            }
         }
-        echo'<br>';
-        $_SESSION['hsp_content']=$_SESSION['hsp_content'].'|';
+
+        echo '<br>';
+        $_SESSION['hsp_content'] = $_SESSION['hsp_content'] . '|';
     }
-    echo $_SESSION['hsp_content'];
+    // echo $_SESSION['hsp_content'];
 
 
 }
@@ -42,6 +47,13 @@ function trouverPlatParId($id, $data)
 {
 
     foreach ($data['plat']['avecOption'] as $section) {
+        foreach ($section as $platJSON) {
+            if ($platJSON['id'] == $id) {
+                return $platJSON;
+            }
+        }
+    }
+    foreach ($data['plat']['sansOption'] as $section) {
         foreach ($section as $platJSON) {
             if ($platJSON['id'] == $id) {
                 return $platJSON;

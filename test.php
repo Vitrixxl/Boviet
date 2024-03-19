@@ -12,6 +12,7 @@
             <a href="index.php?page=plat&plat=poissons">Poisson</a>
             <a href="index.php?page=plat&plat=accompagnement">Accompagnement</a>
             <a href="index.php?page=plat&plat=desserts">Dessert</a>
+            <a href="index.php?page=plat&plat=boissons">Boissons</a>
         </div>
 
 
