@@ -9,7 +9,7 @@ if (isset($_POST['username']) && isset($_POST['psw'])) {
     $pass = 'J&_9VZ8Tej9xk9%';
     $db = 'lab_database';
 
-    $connexion= new mysqli($host, $user,$pass, $db);
+    $connexion= new mysqli("localhost", "root","", "boviet");
 
     if ($connexion->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -22,16 +22,14 @@ if (isset($_POST['username']) && isset($_POST['psw'])) {
     foreach ($resultVerif as $psw) {
 
         if (password_verify($typedPsw, $psw['USR_PSW']) == true) {
+            $_SESSION['id'] = $psw['USR_ID'];
+            $_SESSION["username"] = $username;
+            $_SESSION["connected"] = true;
+            $_SESSION['panier']=array();    
             if ($psw['USR_ADMIN'] == 1) {
-                $_SESSION['id'] = $psw['USR_ID'];
-                $_SESSION["username"] = $username;
-                $_SESSION["connected"] = true;
                 $_SESSION["admin"] = true;
                 header("Location: index.php?page=admin");
             } else {
-                $_SESSION['id'] = $psw['USR_ID'];
-                $_SESSION["username"] = $username;
-                $_SESSION["connected"] = true;
                 $_SESSION["admin"] = false;
                 header("Location: index.php?page=order");
             }
