@@ -103,6 +103,8 @@ panier.splice(0, 1);
           }
         } else {
           if (step + 1 == infoProduit.length || currentLib == "NEM BOBUN" || currentLib == "CACAHUÈTE BOBUN & PAD THAÏ" || currentLib == "BASE POKE BOWL" || currentLib == "CUISSON BOEUF" || currentLib == "OPTIONS SOUPES" || currentLib == "VIANDE MEZZE" || currentLib == "BASE POKE BOWL") {
+            
+            
             if ((currentLib == "CUISSON BOEUF" || currentLib == "OPTIONS SOUPES" || currentLib == "VIANDE MEZZE") && nbOption >= 4) {
               nbOption++;
               if (nbOption >= 6) {
@@ -113,6 +115,9 @@ panier.splice(0, 1);
               }
             }
             nbOption++;
+            if (currentLib=="FORMAT COCA"){
+              nbOption--;
+            }
           }
 
           console.log(currentLib);
@@ -142,3 +147,8 @@ panier.splice(0, 1);
 
   }
 })();
+
+
+
+
+//Bonjour
