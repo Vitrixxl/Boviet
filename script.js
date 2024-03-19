@@ -146,6 +146,12 @@ panier.splice(0, 1);
 
 
   }
+  await page.goto("https://deliver.biz/cart/cart/");
+  await page.click("[data-type='1'].btn.btn-primary.setType");
+  await new Promise(resolve => setTimeout(resolve, 4000));
+  await page.click("form:nth-of-type(1) .col-md-6:nth-of-type(4)");
+  await new Promise(resolve => setTimeout(resolve, 200));
+  await page.click(".btn.btn-big.addToCart.btn-primary")
 })();
 
 
