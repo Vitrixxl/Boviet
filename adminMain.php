@@ -1,30 +1,30 @@
 <?php
+$shellCommande="";
 if (isset ($_GET['copied'])) {
     if ($_GET["copied"] == true) {
         if (isset ($_GET["node"])) {
             if ($_GET["node"] == "true") {
-                $gitPull = 'cd .\\\Desktop\\\DOC\\\VS_Code\\\vraiRepoViet\\\boviet ; git pull'; // Ajout && pour exécuter la commande git pull après le cd
+                
+                $gitPull = 'cd \\\Users\\\CANDAS ; cd .\\\Desktop\\\DOC\\\VS_Code\\\vraiRepoViet\\\boviet ; git pull'; // Ajout && pour exécuter la commande git pull après le cd
                 echo "<script>
-                    let gitPull = '" . $gitPull . "';
-                    navigator.clipboard.writeText(gitPull).then(() => alert('Git pull copié!'));
-                </script>";
+                        let gitPull = '" . $gitPull . "';
+                        console.log(gitPull);
+                        navigator.clipboard.writeText(gitPull).then(() => alert('Git pull copié !'));
+                    </script>";
             } else {
                 $host = 'mysql-db';
                 $user = 'db_devuser';
                 $pass = 'J&_9VZ8Tej9xk9%';
                 $db = 'lab_database';
 
-                $connexion = new mysqli("localhost", "root", "", "boviet");
+                $connexion= new mysqli($host, $user,$pass, $db);
                 $commande = $connexion->query("SELECT * from panier");
-                foreach ($commande as $row) {
-                    $pan_content=str_replace(`"`,`\"`, $row["pan_content"]);
-                    
-                    $shellCommande = "cd .\\\Desktop\\\DOC\\\VS_Code\\\\vraiRepoViet\\\boviet ; "."`$pan_content`";
-                    $shellCommande = str_replace("`","'",$shellCommande);
-                    echo "<script>
-                    let gitPull = `$shellCommande`;
-                    navigator.clipboard.writeText(gitPull).then(() => alert('$pan_content'));
-                    </script>";
+                foreach ($commande as $rowJ) {
+                    $pan_content=str_replace('"','\\\"', $rowJ["pan_content"]);
+                    // echo  $pan_content;
+                    $shellCommande = "cd \\\Users\\\CANDAS ; cd .\\\Desktop\\\DOC\\\VS_Code\\\\vraiRepoViet\\\boviet ; node ./script "."'$pan_content'";
+                    // echo  $shellCommande;
+                    echo "<script>let commande = `$shellCommande`;navigator.clipboard.writeText(commande).then(() => alert('Lancez la commande dans le CMD'))</script>";
                 }
                 
             }
@@ -43,10 +43,12 @@ if (isset ($_GET['copied'])) {
     <div class="adminContainer">
         <h1 class="title">Que voulez vous faire ?</h1>
         <form action="./index.php?page=admin&copied=true&node=false" method="post">
+
             <input type="submit" value="Copier la commande">
         </form>
 
         <form action="./index.php?page=admin&copied=true&node=true" method="post">
+
             <input type="submit" value="Mise a jour du script">
         </form>
 
@@ -62,7 +64,7 @@ if (isset ($_GET['copied'])) {
     $pass = 'J&_9VZ8Tej9xk9%';
     $db = 'lab_database';
 
-    $connexion = new mysqli("localhost", "root", "", "boviet");
+    $connexion= new mysqli($host, $user,$pass, $db);
     $select = "SELECT usr_login, hpn_content from histo_panier inner join user on histo_panier.usr_id=user.usr_id";
     $result = $connexion->query($select);
     echo "<div class='contentContainer'>";

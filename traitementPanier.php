@@ -23,7 +23,7 @@ if (isset($_GET['id']) ){
     
     
     array_push($_SESSION["panier"], $plat);
-    print_r($_SESSION['panier']);
+    
     switch ($_GET['from']) {
         case 'viandes':
             header("Location: index.php?page=plat&plat=viandes&insert=true");
@@ -56,7 +56,7 @@ if (isset($_GET['id']) ){
         
     }
     
-    echo "<button onclick='getPanier()'>Voir le contenu du panier</button>";
+    // echo "<button onclick='getPanier()'>Voir le contenu du panier</button>";
 }
 
 // if (isset ($_GET['test'])) {
