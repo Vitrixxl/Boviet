@@ -73,32 +73,32 @@ panier.splice(0, 1);
           await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 6 + ")");
           await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 8 + ")");
           await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 10 + ")");
-          await new Promise(resolve => setTimeout(resolve, 200));
+          await new Promise(resolve => setTimeout(resolve, 50));
         } else if (idProduit == 171 && currentLib == "OPTIONS MÌ KHÔ") {
           switch (nbOption) {
             case 6:
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
-              await new Promise(resolve => setTimeout(resolve, 200));
+              await new Promise(resolve => setTimeout(resolve, 50));
               break;
 
             case 7:
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
-              await new Promise(resolve => setTimeout(resolve, 200));
+              await new Promise(resolve => setTimeout(resolve, 50));
               break;
 
             case 8:
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
-              await new Promise(resolve => setTimeout(resolve, 200));
+              await new Promise(resolve => setTimeout(resolve, 50));
               break;
 
             case 9:
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 3 + ")");
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
               await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 5 + ")");
-              await new Promise(resolve => setTimeout(resolve, 200));
+              await new Promise(resolve => setTimeout(resolve, 50));
               break;
           }
         } else {
@@ -125,10 +125,10 @@ panier.splice(0, 1);
           if (currentLib == "CONSIGNE DESSERT ÉCOLOGIQUE") {
 
             await page.click('.radio-input');
-            await new Promise(resolve => setTimeout(resolve, 200));
+            await new Promise(resolve => setTimeout(resolve, 50));
           } else {
             await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + nbOption + ")");
-            await new Promise(resolve => setTimeout(resolve, 200));
+            await new Promise(resolve => setTimeout(resolve, 50));
           }
         }
 
@@ -136,7 +136,7 @@ panier.splice(0, 1);
       }
     } else {
       await page.goto("https://deliver.biz/carte/produit/" + idProduit, { timeout: 0 });
-      await new Promise(resolve => setTimeout(resolve, 200));
+      await new Promise(resolve => setTimeout(resolve, 50));
     }
     
     const addToCart = '.addToCart';
@@ -148,11 +148,11 @@ panier.splice(0, 1);
   }
   await page.goto("https://deliver.biz/cart/cart/");
   await page.click("[data-type='1'].btn.btn-primary.setType");
-  await new Promise(resolve => setTimeout(resolve, 4000));
+  await new Promise(resolve => setTimeout(resolve, 2000));
   await page.click("form:nth-of-type(1) .col-md-6:nth-of-type(4)");
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 50));
   await page.click(".btn.btn-big.addToCart.btn-primary");
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  await new Promise(resolve => setTimeout(resolve, 500));
   await page.click(".link.seeMore");
 })();
 
