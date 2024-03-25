@@ -60,15 +60,17 @@ panier.splice(0, 1);
       await page.goto("https://deliver.biz/carte/options/" + idProduit, { timeout: 0 });
       await new Promise(resolve => setTimeout(resolve, 200));
       for (var step = 1; step < infoProduit.length; step++) {
+        if(idProduit==8){
+          step++;
+        }
         var test = step;
+        
         const currentLib = await page.evaluate((test) => {
           const radioInput = document.querySelector("form:nth-of-type(" + test + ") .col-md-12 .headline-gamma");
           return radioInput ? radioInput.innerText : null;
         }, test);
         console.log(currentLib);
-        if(idProduit==8){
-          step++;
-        }
+        
         
           var nbOption = infoProduit[step];
       
