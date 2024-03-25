@@ -67,10 +67,11 @@ panier.splice(0, 1);
         }, test);
         console.log(currentLib);
         if(idProduit==8){
-          var nbOption = infoProduit[step+1];
-        }else{
-          var nbOption = infoProduit[step];
+          step++;
         }
+        
+          var nbOption = infoProduit[step];
+      
         nbOption++;
         if ((idProduit == 32 || idProduit == 27 || idProduit == 183 || idProduit == 29 || idProduit == 28 || idProduit == 30 || idProduit == 31) && nbOption == 7) {
           await page.click("form:nth-of-type(" + step + ") .col-md-6:nth-of-type(" + 4 + ")");
@@ -136,7 +137,9 @@ panier.splice(0, 1);
           }
         }
 
-
+        if(idProduit==8){
+          step--;
+        }
       }
     } else {
       await page.goto("https://deliver.biz/carte/produit/" + idProduit, { timeout: 0 });
