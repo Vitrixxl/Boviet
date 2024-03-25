@@ -71,8 +71,12 @@ panier.splice(0, 1);
         }, test);
         console.log(currentLib);
         
-        
-          var nbOption = infoProduit[step];
+          if (idProduit==8){
+            var nbOption = infoProduit[step-1];
+          }else{
+            var nbOption = infoProduit[step];
+          }
+          
       
         nbOption++;
         if ((idProduit == 32 || idProduit == 27 || idProduit == 183 || idProduit == 29 || idProduit == 28 || idProduit == 30 || idProduit == 31) && nbOption == 7) {
